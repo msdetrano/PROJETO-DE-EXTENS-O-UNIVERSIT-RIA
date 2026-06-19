@@ -2,6 +2,9 @@
 
 Projeto de extensão universitária da disciplina **Análise de Dados para Impacto Social** — UniFECAF, com foco na dimensão **Renda** do Índice de Desenvolvimento Humano (IDH).
 
+## Site
+https://rendafamiliar.vercel.app/
+
 ## 📌 Sobre o projeto
 
 Este projeto nasceu de uma constatação simples e preocupante: segundo a Pesquisa de Endividamento e Inadimplência do Consumidor (PEIC/CNC, 2024), aproximadamente **78% das famílias brasileiras estão endividadas**, sendo o cartão de crédito o principal vilão em 86% dos casos. Por trás desse número está, na maioria das vezes, não a falta de renda, mas a falta de planejamento.
