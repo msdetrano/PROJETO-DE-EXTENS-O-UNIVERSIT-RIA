@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Como Organizar o Orçamento Familiar - Projeto de Extensão Universitária sobre Educação Financeira">
+    <meta name="theme-color" content="#639922">
+    <title>Como Organizar o Orçamento Familiar | UniFECAF</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c2c2a;
+            background: linear-gradient(135deg, #f9fbf6 0%, #f0f4ff 100%);
+        }
+
+        header {
+            background: linear-gradient(135deg, #639922 0%, #378ADD 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 1rem;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.25);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        nav {
+            background: white;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            display: block;
+            padding: 1rem 1.2rem;
+            color: #2c2c2a;
+            text-decoration: none;
+            font-size: 0.95rem;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #639922;
+            border-bottom-color: #639922;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            margin: 4rem 0;
+            padding: 3rem 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            color: #639922;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        section h3 {
+            font-size: 1.3rem;
+            color: #378ADD;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #eaf3de 0%, #e1f5ee 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #639922;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #639922;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .budget-method {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .budget-box {
+            padding: 1.5rem;
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+        }
+
+        .budget-box-50 {
+            background: linear-gradient(135deg, #8abc3c 0%, #639922 100%);
+        }
+
+        .budget-box-30 {
+            background: linear-gradient(135deg, #52a8d8 0%, #378ADD 100%);
+        }
+
+        .budget-box-20 {
+            background: linear-gradient(135deg, #1d9e75 0%, #0F6E56 100%);
+        }
+
+        .budget-percentage {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .budget-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .budget-items {
+            font-size: 0.85rem;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+
+        .tips-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .tips-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #f5f5f1;
+            border-left: 4px solid #378ADD;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .tips-list strong {
+            color: #378ADD;
+        }
+
+        .challenge-box {
+            background: linear-gradient(135deg, #e1f5ee 0%, #eaf3de 100%);
+            border: 2px solid #639922;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .challenge-title {
+            font-size: 1.4rem;
+            color: #639922;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .challenge-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .step {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid #639922;
+        }
+
+        .step-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #639922;
+        }
+
+        .step-text {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            color: #555;
+        }
+
+        .curiosities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .curiosity-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .curiosity-card:hover {
+            box-shadow: 0 4px 12px rgba(99, 153, 34, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .curiosity-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .curiosity-title {
+            font-size: 1rem;
+            color: #639922;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .curiosity-text {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .sources {
+            background: #f5f5f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .sources strong {
+            color: #639922;
+        }
+
+        footer {
+            background: #2c2c2a;
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #639922;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .university-info {
+            background: rgba(99, 153, 34, 0.1);
+            border: 1px solid #639922;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .university-info p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .author-info {
+            background: rgba(55, 138, 221, 0.1);
+            border: 1px solid #378ADD;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .author-info strong {
+            color: #378ADD;
+        }
+
+        .social-badge {
+            display: inline-block;
+            background: #639922;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            header p {
+                font-size: 0.95rem;
+            }
+
+            nav ul {
+                gap: 0;
+            }
+
+            nav a {
+                padding: 0.8rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            section {
+                padding: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            section h2 {
+                font-size: 1.4rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .budget-method {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .interactive-calc {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .calc-input {
+            background: #f5f5f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .calc-input label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .calc-input input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .calc-results {
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .calc-result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 4px;
+            border-left: 4px solid #639922;
+        }
+
+        .calc-result-label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        .calc-result-value {
+            font-weight: 600;
+            color: #639922;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .interactive-calc {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Como Organizar o Orçamento Familiar</h1>
+        <p>Educação Financeira para Transformação Social</p>
+        <div class="header-badge">📚 Projeto de Extensão Universitária</div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#dados">Dados</a></li>
+            <li><a href="#metodo">Método 50-30-20</a></li>
+            <li><a href="#dicas">5 Dicas</a></li>
+            <li><a href="#desafio">Desafio</a></li>
+            <li><a href="#curiosidades">Curiosidades</a></li>
+            <li><a href="#creditos">Sobre</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="apresentacao">
+            <h2>Bem-vindo!</h2>
+            <p class="intro-text">
+                Você sabia que <strong>78% das famílias brasileiras estão endividadas</strong>? E que <strong>1 em cada 3 famílias</strong> não consegue pagar as contas no fim do mês?
+            </p>
+            <p class="intro-text">
+                O grande segredo não é ganhar mais dinheiro — é <strong>organizar melhor o que você já ganha</strong>. Este projeto foi desenvolvido para mostrar que é possível, de forma simples e prática, transformar sua relação com o dinheiro.
+            </p>
+            <p class="intro-text">
+                <strong>As dívidas não surgem do nada. Surgem da ausência de planejamento.</strong> Nesta página, você vai descobrir como mudar isso.
+            </p>
+        </section>
+
+        <section id="dados">
+            <h2>📊 Dados de Impacto</h2>
+            <p>Essas estatísticas mostram a urgência de educação financeira no Brasil:</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">78%</div>
+                    <div class="stat-label">das famílias brasileiras estão endividadas</div>
+                    <div style="font-size: 0.8rem; color: #999; margin-top: 0.5rem;">Fonte: CNC/PEIC 2024</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">1 em 3</div>
+                    <div class="stat-label">famílias não conseguem pagar contas</div>
+                    <div style="font-size: 0.8rem; color: #999; margin-top: 0.5rem;">Fonte: IBGE/POF 2023</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">30%</div>
+                    <div class="stat-label">dos brasileiros anotam gastos</div>
+                    <div style="font-size: 0.8rem; color: #999; margin-top: 0.5rem;">Fonte: SPC Brasil/CNDL 2023</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">86%</div>
+                    <div class="stat-label">das dívidas são do cartão de crédito</div>
+                    <div style="font-size: 0.8rem; color: #999; margin-top: 0.5rem;">Fonte: CNC 2024</div>
+                </div>
+            </div>
+
+            <h3>A Boa Notícia</h3>
+            <p>
+                Segundo o <strong>Banco Central do Brasil</strong>, famílias que adotam um planejamento financeiro mensal reduzem em até <strong>35% o risco de inadimplência</strong>.
+            </p>
+            <p>
+                E um estudo da <strong>OCDE</strong> mostra que a educação financeira nas famílias aumenta a taxa de poupança em até <strong>20% nos primeiros 6 meses de prática</strong>.
+            </p>
+            <p style="margin-top: 1.5rem; font-size: 1.1rem; font-weight: 500; color: #639922;">
+                ✓ É possível mudar. Basta começar.
+            </p>
+        </section>
+
+        <section id="metodo">
+            <h2>💡 O Método 50-30-20</h2>
+            <p>
+                O método mais eficaz para organizar um orçamento familiar é o <strong>50-30-20</strong>, popularizado pela professora e senadora norte-americana <strong>Elizabeth Warren</strong>. É simples, mas poderoso.
+            </p>
+
+            <div class="budget-method">
+                <div class="budget-box budget-box-50">
+                    <div class="budget-percentage">50%</div>
+                    <div class="budget-title">Necessidades</div>
+                    <div class="budget-items">
+                        Aluguel<br>Alimentação<br>Transporte<br>Saúde<br>Contas fixas
+                    </div>
+                </div>
+                
+                <div class="budget-box budget-box-30">
+                    <div class="budget-percentage">30%</div>
+                    <div class="budget-title">Desejos</div>
+                    <div class="budget-items">
+                        Lazer<br>Roupas<br>Restaurantes<br>Hobbies<br>Entretenimento
+                    </div>
+                </div>
+                
+                <div class="budget-box budget-box-20">
+                    <div class="budget-percentage">20%</div>
+                    <div class="budget-title">Poupança & Dívidas</div>
+                    <div class="budget-items">
+                        Reserva de emergência<br>Quitação de dívidas<br>Investimentos
+                    </div>
+                </div>
+            </div>
+
+            <h3>Como Usar o Método</h3>
+            <div class="interactive-calc">
+                <div class="calc-input">
+                    <label for="renda">Sua renda mensal (R$):</label>
+                    <input type="number" id="renda" placeholder="2000" value="2000" min="0" oninput="calcularOrcamento()">
+                    <p style="font-size: 0.85rem; color: #999;">Digite sua renda e veja como fica a distribuição</p>
+                </div>
+                
+                <div class="calc-results">
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">💚 50% Necessidades:</span>
+                        <span class="calc-result-value" id="valor50">R$ 1.000</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">💙 30% Desejos:</span>
+                        <span class="calc-result-value" id="valor30">R$ 600</span>
+                    </div>
+                    <div class="calc-result-row">
+                        <span class="calc-result-label">💚 20% Poupança:</span>
+                        <span class="calc-result-value" id="valor20">R$ 400</span>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 2rem; padding: 1rem; background: #f5f5f1; border-radius: 8px; border-left: 4px solid #378ADD;">
+                <strong>O orçamento não é uma prisão.</strong> É o mapa que te leva para onde você quer chegar.
+            </p>
+        </section>
+
+        <section id="dicas">
+            <h2>✨ 5 Dicas para Começar Hoje</h2>
+            
+            <ol class="tips-list">
+                <li><strong>Anote tudo por 30 dias.</strong> Sim, tudo. Cada café, cada ônibus, cada compra. Você vai se chocar e perceber para onde vai seu dinheiro.</li>
+                
+                <li><strong>Separe fixo do variável.</strong> Contas fixas (aluguel, internet) não mudam. Gastos variáveis (mercado, combustível) você pode controlar.</li>
+                
+                <li><strong>Crie uma reserva de emergência.</strong> Nem que seja R$ 50 por mês. Esse é seu colchão contra imprevistos — desemprego, doença, quebra de equipamentos.</li>
+                
+                <li><strong>Evite o crédito rotativo.</strong> Cheque especial e cartão com juros mensais são assassinos financeiros. Juros de até 20% ao mês!</li>
+                
+                <li><strong>Revise assinaturas e serviços.</strong> Aquele app que não usa mais, aquele streaming que esqueceu de cancelar — corte AGORA.</li>
+            </ol>
+
+            <p style="margin-top: 2rem; padding: 1rem; background: #eaf3de; border-radius: 8px; border-left: 4px solid #639922; font-size: 1.05rem;">
+                💡 <strong>Apps recomendados:</strong> Mobills, Minhas Economias, Organizze
+            </p>
+        </section>
+
+        <section id="desafio">
+            <h2>🎯 Desafio: 3 Passos para Começar HOJE</h2>
+            
+            <div class="challenge-box">
+                <div class="challenge-title">Você é capaz de fazer isso em 1 hora</div>
+                
+                <div class="challenge-steps">
+                    <div class="step">
+                        <div class="step-number">1️⃣</div>
+                        <div class="step-text">Some quanto gastou nos últimos 30 dias</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">2️⃣</div>
+                        <div class="step-text">Escolha 1 gasto desnecessário para cortar</div>
+                    </div>
+                    
+                    <div class="step">
+                        <div class="step-number">3️⃣</div>
+                        <div class="step-text">Transfira R$ 50 para uma poupança HOJE</div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 2rem; font-size: 1.1rem; color: #639922; font-weight: 600;">
+                    Comece pequeno. O importante é começar.
+                </p>
+            </div>
+        </section>
+
+        <section id="curiosidades">
+            <h2>🔍 Curiosidades & Estudos</h2>
+            
+            <div class="curiosities-grid">
+                <div class="curiosity-card">
+                    <div class="curiosity-icon">📈</div>
+                    <div class="curiosity-title">Efeito Composto</div>
+                    <div class="curiosity-text">R$ 50/mês por 20 anos a 6% ao ano = R$ 22.000. O tempo e consistência são seus maiores aliados.</div>
+                </div>
+                
+                <div class="curiosity-card">
+                    <div class="curiosity-icon">🧠</div>
+                    <div class="curiosity-title">Comportamento Financeiro</div>
+                    <div class="curiosity-text">Pessoas que anotam gastos gastam 20% menos do que as que não anotam — só de ver escrito muda o comportamento.</div>
+                </div>
+                
+                <div class="curiosity-card">
+                    <div class="curiosity-icon">💰</div>
+                    <div class="curiosity-title">Custo Real da Dívida</div>
+                    <div class="curiosity-text">Um empréstimo de R$ 1.000 no cartão pode custar R$ 2.400 em 12 meses. Os juros comem seu futuro.</div>
+                </div>
+                
+                <div class="curiosity-card">
+                    <div class="curiosity-icon">🎓</div>
+                    <div class="curiosity-title">Alfabetização Financeira</div>
+                    <div class="curiosity-text">Apenas 1 em cada 4 brasileiros tem educação financeira formal. Mas é ensinável — você está aprendendo agora!</div>
+                </div>
+                
+                <div class="curiosity-card">
+                    <div class="curiosity-icon">🌍</div>
+                    <div class="curiosity-title">Índice de Desenvolvimento Humano</div>
+                    <div class="curiosity-text">Educação financeira aumenta renda, saúde e qualidade de vida — os 3 pilares do IDH.</div>
+                </div>
+                
+                <div class="curiosity-card">
+                    <div class="curiosity-icon">✅</div>
+                    <div class="curiosity-title">Transformação Mensurável</div>
+                    <div class="curiosity-text">Em 6 meses de organização financeira, 80% das famílias reduzem stress, 65% criam reserva de emergência.</div>
+                </div>
+            </div>
+
+            <div class="sources">
+                <strong>Fontes citadas neste projeto:</strong><br>
+                • CNC/PEIC (Pesquisa de Endividamento e Inadimplência) — 2024<br>
+                • IBGE/POF (Pesquisa de Orçamentos Familiares) — 2023<br>
+                • SPC Brasil/CNDL (Comportamento do Consumidor) — 2023<br>
+                • Banco Central do Brasil (Estratégia Nacional de Educação Financeira) — 2022<br>
+                • OCDE (Organização para Cooperação e Desenvolvimento Econômico) — 2023<br>
+                • PNUD (Programa das Nações Unidas para o Desenvolvimento) — 2023/2024
+            </div>
+        </section>
+
+        <section id="creditos">
+            <h2>📚 Sobre Este Projeto</h2>
+            
+            <div class="university-info">
+                <p><strong>Instituição:</strong> UniFECAF</p>
+                <p><strong>Disciplina:</strong> Análise de Dados para Impacto Social</p>
+                <p><strong>Tipo:</strong> Projeto de Extensão Universitária</p>
+                <p><strong>Área do IDH:</strong> Renda (Desenvolvimento Humano)</p>
+                <p><strong>Público-alvo:</strong> Famílias de baixa e média renda, estudantes</p>
+                <p><strong>Data:</strong> Junho de 2026</p>
+            </div>
+
+            <div class="author-info">
+                <p><strong>Desenvolvedor do Projeto:</strong></p>
+                <p>Marcos Detrano Rodrigues Junior<br>
+                Curso: Tecnologia em Inteligência Artificial e Automação Digital<br>
+                Análise de Dados para Impacto Social — UniFECAF, com foco na dimensão Renda do Índice de Desenvolvimento Humano (IDH)</p>
+            </div>
+
+            <h3>Objetivo do Projeto</h3>
+            <p>
+                Este projeto nasceu de uma simples constatação: <strong>muita gente sofre financeiramente não porque não ganha dinheiro, mas porque não sabe organizá-lo</strong>. E isso é ensinável.
+            </p>
+            <p>
+                Ao disseminar conceitos básicos de planejamento orçamentário, controle de gastos e formação de reserva de emergência, contribuímos diretamente para:
+            </p>
+            <ul style="margin: 1rem 0 1rem 1.5rem;">
+                <li>✓ Redução do endividamento familiar</li>
+                <li>✓ Aumento da qualidade de vida</li>
+                <li>✓ Melhoria nos indicadores de saúde (menos stress)</li>
+                <li>✓ Investimento em educação (dos filhos)</li>
+                <li>✓ Alcance dos Objetivos de Desenvolvimento Sustentável</li>
+            </ul>
+
+            <h3>Recursos Adicionais</h3>
+            <p>
+                Este site complementa o <strong>folder tri-fold impresso</strong> e foi desenvolvido para que você possa:
+            </p>
+            <ul style="margin: 1rem 0 1rem 1.5rem;">
+                <li>📱 Compartilhar com alunos e responsáveis</li>
+                <li>📊 Acessar dados e fontes completas</li>
+                <li>🧮 Calcular seu orçamento pessoal</li>
+                <li>🎯 Participar do desafio de 3 passos</li>
+                <li>📚 Aprofundar estudos sobre educação financeira</li>
+            </ul>
+
+            <div style="margin-top: 2rem; padding: 1.5rem; background: #f5f5f1; border-radius: 8px; text-align: center;">
+                <p style="font-size: 1.05rem; color: #639922; font-weight: 600;">
+                    Este é um projeto de educação financeira para transformação social.
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.95rem; color: #666;">
+                    Todos têm direito a conhecimento financeiro. Começar hoje te leva para um futuro melhor.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Projeto Universitário</h3>
+                <p>UniFECAF • Análise de Dados para Impacto Social</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Elaborado por</h3>
+                <p>Marcos Detrano Rodrigues Junior</p>
+                <p style="font-size: 0.85rem; color: #999;">Tech Lead em Infraestrutura & SRE | Edge.UOL</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato & Compartilhamento</h3>
+                <p>Este material foi desenvolvido como parte de um projeto de extensão universitária para promoção de educação financeira em comunidades.</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #999;">Sinta-se livre para compartilhar este link com familiares, alunos e amigos.</p>
+            </div>
+
+            <div style="border-top: 1px solid #555; padding-top: 1.5rem; margin-top: 2rem;">
+                <p style="font-size: 0.85rem; color: #999;">
+                    © 2026 UniFECAF • Projeto de Extensão Universitária<br>
+                    "O orçamento não é uma prisão. É o mapa que te leva para onde você quer chegar."
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function calcularOrcamento() {
+            const renda = parseFloat(document.getElementById('renda').value) || 0;
+            const valor50 = renda * 0.5;
+            const valor30 = renda * 0.3;
+            const valor20 = renda * 0.2;
+
+            document.getElementById('valor50').textContent = 'R$ ' + valor50.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('valor30').textContent = 'R$ ' + valor30.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('valor20').textContent = 'R$ ' + valor20.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        // Smooth scroll para links de navegação
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({behavior: 'smooth'});
+                }
+            });
+        });
+
+        // Calcular ao carregar
+        calcularOrcamento();
+    </script>
+</body>
+</html>
