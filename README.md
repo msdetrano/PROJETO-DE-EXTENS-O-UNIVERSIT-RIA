@@ -2,6 +2,9 @@
 
 Projeto de extensão universitária da disciplina **Análise de Dados para Impacto Social** — UniFECAF, com foco na dimensão **Renda** do Índice de Desenvolvimento Humano (IDH).
 
+<img width="1024" height="1536" alt="Banner 80-120cm" src="https://github.com/user-attachments/assets/5d6104ee-d56a-4cf7-9ebd-ed1457e5fac3" />
+
+
 ## Site
 https://rendafamiliar.vercel.app/
 
